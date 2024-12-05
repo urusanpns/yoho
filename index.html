@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Absensi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Absensi Karyawan</h1>
+
+        <div class="form">
+            <label for="name">Nama:</label>
+            <select id="name">
+                <option value="dr. Intan Nurlaily">dr. Intan Nurlaily</option>
+                <option value="Suhardi, SE">Suhardi, SE</option>
+                <option value="I Nyoman BK, S.Kep.">I Nyoman BK, S.Kep.</option>
+                <option value="Saeful Mansur, A.Md.">Saeful Mansur, A.Md.</option>
+                <option value="drg. Rosita Rahayu">drg. Rosita Rahayu</option>
+                <option value="Ilminatun Qoimah, A.Md.Keb">Ilminatun Qoimah, A.Md.Keb</option>
+                <option value="Sukarwati">Sukarwati</option>
+                <option value="Aceng Suhermansyah, A.Md.Kep">Aceng Suhermansyah, A.Md.Kep</option>
+                <option value="Melda sari Simanjuntak, A.Md.Keb">Melda sari Simanjuntak, A.Md.Keb</option>
+                <option value="Sempana Ginting, A.Md.Keb">Sempana Ginting, A.Md.Keb</option>
+                <option value="Ariansi Novita Gansa, A.Md.Keb">Ariansi Novita Gansa, A.Md.Keb</option>
+                <option value="Ester Gusrina, A.Md">Ester Gusrina, A.Md</option>
+                <option value="Achyar Fauzan, S.K.M">Achyar Fauzan, S.K.M</option>
+                <option value="Maemunah, S.Kep.Ns">Maemunah, S.Kep.Ns</option>
+                <option value="Choirur Razikin, S.K.M">Choirur Razikin, S.K.M</option>
+                <option value="Elda Prilyana, S.K.M.">Elda Prilyana, S.K.M.</option>
+                <option value="Siti Jasilah, A.Md.Kep">Siti Jasilah, A.Md.Kep</option>
+                <option value="Novarica, A.Md.Keb">Novarica, A.Md.Keb</option>
+                <option value="Asri Yanti, A.Md.Keb">Asri Yanti, A.Md.Keb</option>
+                <option value="Ahmad Atim U'udzi, A.Md.Kep.">Ahmad Atim U'udzi, A.Md.Kep.</option>
+                <option value="Fredi Mengkanna, A.Md.Kep">Fredi Mengkanna, A.Md.Kep</option>
+                <option value="Akhmad Yulian Noor, A.Md.KG">Akhmad Yulian Noor, A.Md.KG</option>
+                <option value="Ari Budianto, A.Md.AK">Ari Budianto, A.Md.AK</option>
+                <option value="Nurul Ashopa, A.Md.Kep.">Nurul Ashopa, A.Md.Kep.</option>
+                <option value="Laili Hidayati, A.Md.Keb">Laili Hidayati, A.Md.Keb</option>
+                <option value="Fatimatul Muniroh, A.Md. Kep">Fatimatul Muniroh, A.Md. Kep</option>
+                <option value="Feni Indriyani, A.Md.Keb">Feni Indriyani, A.Md.Keb</option>
+                <option value="Rina Astutik Septiani, A.Md.Kep">Rina Astutik Septiani, A.Md.Kep</option>
+                <option value="apt. Karlina Widyastuti, S.Farm.">apt. Karlina Widyastuti, S.Farm.</option>
+                <option value="Ns. Amelia Lucky Sthepanie, S.Kep">Ns. Amelia Lucky Sthepanie, S.Kep</option>
+                <option value="I Gusti Ayu Geria Suparsa, S.K.M.">I Gusti Ayu Geria Suparsa, S.K.M.</option>
+                <option value="dr. Eka Ronauli Sitorus">dr. Eka Ronauli Sitorus</option>
+                <option value="Santi Ariadi, A.Md.Kep">Santi Ariadi, A.Md.Kep</option>
+                <option value="Deddy Syahputra,A.Md.Kep">Deddy Syahputra,A.Md.Kep</option>
+                <option value="Sitti Aisyah Anas, A.Md.Farm">Sitti Aisyah Anas, A.Md.Farm</option>
+                <option value="Maya Imelda, A.Md.AK">Maya Imelda, A.Md.AK</option>
+                <option value="Mei Trimayanti, A.Md.Keb">Mei Trimayanti, A.Md.Keb</option>
+                <option value="Nurwandany, A.Md.Kep.">Nurwandany, A.Md.Kep.</option>
+                <option value="Agus Istikharoh, A.Md.Keb.">Agus Istikharoh, A.Md.Keb.</option>
+                <option value="Asmaul Husna, A.Md.Keb.">Asmaul Husna, A.Md.Keb.</option>
+                <option value="Ari Yunica, A.Md.KL">Ari Yunica, A.Md.KL</option>
+                <option value="Woro Palupi, A.Md.Keb">Woro Palupi, A.Md.Keb</option>
+                <option value="Yoldan">Yoldan</option>
+                <option value="Siti Puryani">Siti Puryani</option>
+                <option value="Nurgianto">Nurgianto</option>
+                <option value="Supriani">Supriani</option>
+                <option value="Bunga Rizki Rama Dila, A.Md.Kep">Bunga Rizki Rama Dila, A.Md.Kep</option>
+                <option value="Yuliani, SE">Yuliani, SE</option>
+                <option value="Yelsya Ari' Ranggu', A. Md. Kep">Yelsya Ari' Ranggu', A. Md. Kep</option>
+                <option value="Rizki Dita Atmasari, A.Md.Keb">Rizki Dita Atmasari, A.Md.Keb</option>
+                <option value="Ns. Rahmat Dian Sarif, S.Kep">Ns. Rahmat Dian Sarif, S.Kep</option>
+                <option value="Moh Amrullah, A.Md.Farm">Moh Amrullah, A.Md.Farm</option>
+                <option value="Fatmawar, SE">Fatmawar, SE</option>
+                <option value="Wina, A. Md. Keb">Wina, A. Md. Keb</option>
+                <option value="Reza Juliandi Irawan, A. Md. Kep">Reza Juliandi Irawan, A. Md. Kep</option>
+                <option value="Upik Pita Damayanti, S.K.M.">Upik Pita Damayanti, S.K.M.</option>
+                <option value="dr. Rizqi Amalia Arumsari">dr. Rizqi Amalia Arumsari</option>
+                <option value="dr. Nia Ramadhanurrosita">dr. Nia Ramadhanurrosita</option>
+                <option value="dr. Susi Ristiyanti">dr. Susi Ristiyanti</option>
+            </select>
+
+            <label for="status">Status:</label>
+            <select id="status">
+                <option value="HADIR">HADIR</option>
+                <option value="IZIN">IZIN</option>
+                <option value="CUTI">CUTI</option>
+                <option value="SAKIT">SAKIT</option>
+                <option value="DINAS LUAR">DINAS LUAR</option>
+            </select>
+
+            <label for="days">Jumlah Hari:</label>
+            <select id="days">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="365">365</option>
+            </select>
+
+            <button id="submitAbsence">KLIK UNTUK ABSEN</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
